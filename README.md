@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/MrZiddux/ZiLaundry/blob/master/public/assets/img/logos/laundry-circle.svg" width="200"></p>
+<p align="center"><img src="https://github.com/MrZiddux/ZiLaundry/blob/master/public/assets/img/logos/laundry-circle.svg" width="250"></p>
 
 ## Tentang Zilaundry
 
