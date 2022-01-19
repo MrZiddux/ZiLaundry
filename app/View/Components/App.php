@@ -11,11 +11,12 @@ class App extends Component
      *
      * @return void
      */
-    public $script, $title;
-    public function __construct($script = null, $title = null)
+    public $script, $title, $btm;
+    public function __construct($script = null, $title = null, $btm = null)
     {
         $this->script = $script ?? "";
         $this->title = $title ?? "";
+        $this->btm = $btm ?? "";
     }
 
     /**
