@@ -3,28 +3,17 @@
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
-         <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Create Data Member</h5>
+         <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Create Data Package</h5>
          <button type="clear" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('member.store') }}" method="POST" autocomplete="off">
+         <form action="{{ route('package.store') }}" method="POST" autocomplete="off">
             @csrf
             <div class="modal-body">
                <div class="input-group input-group-dynamic mb-4 mt-2">
                   <label class="form-label">Name</label>
                   <input type="text" class="form-control" name="nama">
-               </div>
-               <label>Gender</label>
-               <div class="d-flex mb-4">
-                  <div class="form-check ps-1">
-                     <input class="form-check-input" type="radio" name="jenis_kelamin" id="male" value="L">
-                     <label class="custom-control-label" for="male">Male</label>
-                  </div>
-                  <div class="form-check">
-                     <input class="form-check-input" type="radio" name="jenis_kelamin" id="female" value="P">
-                     <label class="custom-control-label" for="female">Female</label>
-                  </div>
                </div>
                <div class="input-group input-group-dynamic mb-4">
                   <label class="form-label">Number</label>
@@ -49,29 +38,18 @@
    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
          <div class="modal-header">
-         <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Data Outlet</h5>
+         <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Edit Data Package</h5>
          <button type="clear" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('member.update') }}" method="POST" autocomplete="off">
+         <form action="{{ route('package.update') }}" method="POST" autocomplete="off">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id">
                <div class="input-group input-group-static mb-4 mt-2">
                   <label for="nama">Name</label>
                   <input type="text" class="form-control" name="nama" id="nama">
-               </div>
-               <label>Sex</label>
-               <div class="d-flex mb-4">
-                  <div class="form-check ps-1">
-                     <input class="form-check-input" type="radio" name="jenis_kelamin" id="male" value="L">
-                     <label class="custom-control-label" for="male">Male</label>
-                  </div>
-                  <div class="form-check">
-                     <input class="form-check-input" type="radio" name="jenis_kelamin" id="female" value="P">
-                     <label class="custom-control-label" for="female">Female</label>
-                  </div>
                </div>
                <div class="input-group input-group-static mb-4">
                   <label for="tlp">Number</label>
@@ -96,12 +74,12 @@
    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
       <div class="modal-content">
          <div class="modal-header">
-         <h6 class="modal-title font-weight-normal" id="modal-title-notification">Delete Data Member</h6>
+         <h6 class="modal-title font-weight-normal" id="modal-title-notification">Delete Data Package</h6>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
          </button>
          </div>
-         <form action="{{ route('member.destroy') }}" method="POST">
+         <form action="{{ route('package.destroy') }}" method="POST">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id2">
@@ -109,7 +87,7 @@
                   <i class="material-icons text-secondary" style="font-size: 6rem">
                      warning  
                   </i>
-                  <h4 class="text-gradient text-danger mt-2" id="namaMember"></h4>
+                  <h4 class="text-gradient text-danger mt-2" id="namaPackage"></h4>
                   <p>Are you sure to delete the data above?</p>
                </div>
             </div>
