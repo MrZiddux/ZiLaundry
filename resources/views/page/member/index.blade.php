@@ -1,4 +1,17 @@
 <x-app title="Outlets">
+   @if (session('status'))
+   <div class="alert alert-success alert-dismissible fade show text-white mb-4" role="alert">
+      <span class="alert-icon align-middle">
+         <span class="material-icons text-md">
+         thumb_up_off_alt
+         </span>
+      </span>
+      <span class="alert-text"><strong>Success!</strong>&nbsp;&nbsp;{{ session('status') }}</span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   @endif
    <div class="row">
       <div class="col-12">
          <div class="card my-4">
@@ -53,7 +66,7 @@
                                  <span class="badge badge-sm bg-gradient-secondary">Inactive</span>
                               </td>
                               <td class="align-middle">
-                                 <button class="btn btn-link text-dark px-3 mb-0 btnEdit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{ $item->id }}" data-nama="{{ $item->nama }}" data-tlp="{{ $item->tlp }}" data-alamat="{{ $item->alamat }}"><i class="material-icons text-sm me-2">edit</i>Edit</button>
+                                 <button class="btn btn-link text-dark px-3 mb-0 btnEdit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{ $item->id }}" data-nama="{{ $item->nama }}" data-jenis-kelamin="{{ $item->jenis_kelamin }}" data-tlp="{{ $item->tlp }}" data-alamat="{{ $item->alamat }}"><i class="material-icons text-sm me-2">edit</i>Edit</button>
                                  <button class="btn btn-link text-danger text-gradient px-3 mb-0 btnHapus" data-bs-toggle="modal" data-bs-target="#hapusModal" data-id="{{ $item->id }}" data-nama="{{ $item->nama }}"><i class="material-icons text-sm me-2">delete</i>Delete</button>
                               </td>
                            </tr>
@@ -76,13 +89,17 @@
                let row = $(this).closest('tr')
                let id = row.find('td:eq(5) .btnEdit').data('id')
                let nama = row.find('td:eq(5) .btnEdit').data('nama')
-               let jenis_kelamin = row.find('td:eq(5) .btnEdit').data('jenis_kelamin')
+               let jenis_kelamin = row.find('td:eq(5) .btnEdit').data('jenis-kelamin')
                let tlp = row.find('td:eq(5) .btnEdit').data('tlp')
                let alamat = row.find('td:eq(5) .btnEdit').data('alamat')
 
                $('#editModal #id').val(id);
                $('#editModal #nama').val(nama);
-               $('#editModal #jenisKelamin').val(jenis_kelamin);
+               if(jenis_kelamin == "L") {
+                  $('#editModal #male').prop('checked', true);
+               } else if(jenis_kelamin == "P") {
+                  $('#editModal #female').prop('checked', true);
+               }
                $('#editModal #tlp').val(tlp);
                $('#editModal #alamat').text(alamat);
             })
@@ -94,6 +111,8 @@
                $('#hapusModal #id2').val(id)
                $('#hapusModal #namaMember').text(nama)
             })
+
+            $('.alert').delay(5000).fadeOut('slow');
          })
       </script>
    </x-slot>

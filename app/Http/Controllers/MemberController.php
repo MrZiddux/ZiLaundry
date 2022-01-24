@@ -16,18 +16,18 @@ class MemberController extends Controller
     public function store(Request $r)
     {
         Member::create($r->all());
-        return back();
+        return back()->with('status', 'New Data Member Added!');
     }
 
     public function update(Request $r)
     {
         Member::find($r->id)->update($r->all());
-        return back();
+        return back()->with('status', 'Edit Data Member Successfull');
     }
 
     public function destroy(Request $r)
     {
         Member::findOrFail($r->id)->delete();
-        return back();
+        return back()->with('status', 'Delete Data Member Success');
     }
 }

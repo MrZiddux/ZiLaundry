@@ -1,4 +1,17 @@
 <x-app title="Outlets">
+   @if (session('status'))
+   <div class="alert alert-success alert-dismissible fade show text-white mb-4" role="alert">
+      <span class="alert-icon align-middle">
+         <span class="material-icons text-md">
+         thumb_up_off_alt
+         </span>
+      </span>
+      <span class="alert-text"><strong>Success!</strong>&nbsp;&nbsp;{{ session('status') }}</span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   @endif
    <div class="row">
       <div class="col-12">
          <div class="card my-4">
@@ -82,6 +95,8 @@
                $('#hapusModal #id2').val(id)
                $('#hapusModal #namaOutlet').text(nama)
             })
+
+            $('.alert').delay(5000).fadeOut('slow');
          })
       </script>
    </x-slot>

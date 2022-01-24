@@ -54,7 +54,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('outlet.update') }}" method="POST" autocomplete="off">
+         <form action="{{ route('member.update') }}" method="POST" autocomplete="off">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id">

@@ -16,18 +16,18 @@ class OutletController extends Controller
     public function store(Request $r)
     {
         Outlet::create($r->all());
-        return back();
+        return back()->with('status', 'New Data Outlet Added!');
     }
 
     public function update(Request $r)
     {
         Outlet::find($r->id)->update($r->all());
-        return back();
+        return back()->with('status', 'Edit Data Member Successfull');
     }
 
     public function destroy(Request $r)
     {
         Outlet::findOrFail($r->id)->delete();
-        return back();
+        return back()->with('status', 'Delete Data Member Success');
     }
 }
