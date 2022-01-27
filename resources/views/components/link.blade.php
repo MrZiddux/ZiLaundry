@@ -8,7 +8,9 @@
 <!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 <!-- CSS Files -->
-{{-- <link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" /> --}}
-<link id="pagestyle" href="./assets/css/material-dashboard-pro.min.css" rel="stylesheet" />
-{{-- DataTables --}}
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+<link id="pagestyle" href="./assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+{{-- Grid JS --}}
+{{-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css"> --}}
+<link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+{{-- Custom CSS --}}
+<link rel="stylesheet" href=".assets/css/style.css">

@@ -1,0 +1,16 @@
+.alertAnimation {
+    animation-name: alert-pop-in;
+    animation-duration: 200ms;
+}
+
+@keyframes alert-pop-in {
+    0% {
+        display: none;
+        transform: translateX(200%);
+    }
+
+    100% {
+        display: block;
+        transform: translateX(0);
+    }
+}

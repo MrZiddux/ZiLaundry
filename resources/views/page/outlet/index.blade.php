@@ -1,5 +1,6 @@
 <x-app title="Outlets">
-   @if (session('status'))
+    <div id="alertHere"></div>
+   {{-- @if (session('status'))
    <div class="alert alert-success alert-dismissible fade show text-white mb-4" role="alert">
       <span class="alert-icon align-middle">
          <span class="material-icons text-md">
@@ -11,7 +12,7 @@
             <span aria-hidden="true">&times;</span>
       </button>
    </div>
-   @endif
+   @endif --}}
    <div class="row">
       <div class="col-12">
          <div class="card my-4">
@@ -66,6 +67,7 @@
                </div>
             </div>
          </div>
+        <div id="wrapperTable"></div>
       </div>
    </div>
    <x-slot name="btm">
@@ -73,30 +75,111 @@
    </x-slot>
    <x-slot name="script">
       <script>
+        // const grid = new gridjs()
+        const gridOutlet = new gridjs.Grid({
+            server: {
+                method: 'GET',
+                url: '/outlet/getData',
+                then: data=>data.map(item =>[
+                    item.nama,
+                    item.tlp,
+                    item.alamat,
+                    new gridjs.html(
+                        `<button class='btn btn-link text-dark px-3 mb-0 btnEdit' data-bs-toggle='modal' data-bs-target='#editModal' data-id='${item.id}' data-nama='${item.nama}' data-tlp='${item.tlp}' data-alamat='${item.alamat}'><i class='material-icons text-sm me-2'>edit</i>Edit</button>` +
+                        `<button class="btn btn-link text-danger text-gradient px-3 mb-0 btnHapus" data-bs-toggle="modal" data-bs-target="#hapusModal" data-id="${item.id}" data-nama="${item.nama}"><i class="material-icons text-sm me-2">delete</i>Delete</button>`
+                    ),
+                ]),
+            },
+            columns: [
+                {
+                    name: 'Name',
+                },
+                {
+                    name: 'Phone Number',
+                },
+                {
+                    name: 'Address',
+                },
+                {
+                    name: 'Actions',
+                },
+            ],
+            className: {
+                thead: 'bg-primary',
+                th: 'text-uppercase text-secondary text-xxs font-weight-bolder opacity-7',
+                table: 'table align-items-center mb-0',
+            },
+            fixedHeader: true,
+            sort: true,
+            pagination: true,
+            search: true,
+        }).render(document.getElementById("wrapperTable"));
 
-         $(function () {
-            $('#outletsTable').on('click', '.btnEdit', function() {
-               let row = $(this).closest('tr')
-               let id = row.find('td:eq(4) .btnEdit').data('id')
-               let nama = row.find('td:eq(4) .btnEdit').data('nama')
-               let tlp = row.find('td:eq(4) .btnEdit').data('tlp')
-               let alamat = row.find('td:eq(4) .btnEdit').data('alamat')
+        $(function () {
+            $('#wrapperTable').on('click', '.btnEdit', function() {
+                let row = $(this).closest('tr')
+                let id = row.find('td:eq(3) .btnEdit').data('id')
+                let nama = row.find('td:eq(3) .btnEdit').data('nama')
+                let tlp = row.find('td:eq(3) .btnEdit').data('tlp')
+                let alamat = row.find('td:eq(3) .btnEdit').data('alamat')
 
-               $('#editModal #id').val(id);
-               $('#editModal #nama').val(nama);
-               $('#editModal #tlp').val(tlp);
-               $('#editModal #alamat').text(alamat);
+                $('#editModal #id').val(id);
+                $('#editModal #nama').val(nama);
+                $('#editModal #tlp').val(tlp);
+                $('#editModal #alamat').text(alamat);
             })
 
-            $('#outletsTable').on('click', '.btnHapus', function() {
-               let row = $(this).closest('tr')
-               let id = row.find('td:eq(4) .btnHapus').data('id')
-               let nama = row.find('td:eq(4) .btnHapus').data('nama')
-               $('#hapusModal #id2').val(id)
-               $('#hapusModal #namaOutlet').text(nama)
+            $('#wrapperTable').on('click', '.btnHapus', function() {
+                let row = $(this).closest('tr')
+                let id = row.find('td:eq(3) .btnHapus').data('id')
+                let nama = row.find('td:eq(3) .btnHapus').data('nama')
+                $('#hapusModal #id2').val(id)
+                $('#hapusModal #namaOutlet').text(nama)
             })
 
             $('.alert').delay(5000).fadeOut('slow');
+
+            $('#btnCreateOutlet').click(function(e) {
+                e.preventDefault()
+                let createformdata = new FormData(document.getElementById('formCreateOutlet'))
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('outlet.store') }}",
+                    processData: false,
+                    contentType: false,
+                    data: createformdata,
+                    success: function(data) {
+                        if(data.success) {
+                            gridOutlet.forceRender()
+                            $('#alertHere').html(
+                                `<div class="alert alert-success alert-dismissible fade show text-white mb-4 alertAnimation" role="alert">
+                                    <span class="alert-icon align-middle">
+                                        <span class="material-icons text-md">
+                                        thumb_up_off_alt
+                                        </span>
+                                    </span>
+                                    <span class="alert-text"><strong>Success!</strong>&nbsp;&nbsp;Create Data Outlet Successfull</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>`
+                            )
+                        } else {
+                            `<div class="alert alert-danger alert-dismissible fade show text-white mb-4 alertAnimation" role="alert">
+                                <span class="alert-icon align-middle">
+                                    <span class="material-icons text-md">
+                                    info
+                                    </span>
+                                </span>
+                                <span class="alert-text"><strong>Success!</strong>&nbsp;&nbsp;Create Data Outlet Successfull</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>`
+                        }
+                    }
+                })
+            })
          })
       </script>
    </x-slot>

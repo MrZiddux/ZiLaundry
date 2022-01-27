@@ -13,10 +13,16 @@ class OutletController extends Controller
         return view('page.outlet.index', compact('outlets'));
     }
 
+    public function getData()
+    {
+        $outlets = Outlet::get();
+        return response()->json($outlets);
+    }
+
     public function store(Request $r)
     {
         Outlet::create($r->all());
-        return back()->with('status', 'New Data Outlet Added!');
+        return response()->json(array('success' => true));
     }
 
     public function update(Request $r)

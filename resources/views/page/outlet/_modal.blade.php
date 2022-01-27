@@ -8,7 +8,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('outlet.store') }}" method="POST" autocomplete="off">
+         <form autocomplete="off" id="formCreateOutlet">
             @csrf
             <div class="modal-body">
                <div class="input-group input-group-dynamic mb-4 mt-2">
@@ -26,7 +26,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn bg-gradient-primary">Create</button>
+               <button type="submit" class="btn bg-gradient-primary" id="btnCreateOutlet">Create</button>
             </div>
          </form>
       </div>
@@ -85,7 +85,7 @@
                <input type="hidden" name="id" id="id2">
                <div class="py-3 text-center">
                   <i class="material-icons text-secondary" style="font-size: 6rem">
-                     warning  
+                     warning
                   </i>
                   <h4 class="text-gradient text-danger mt-2" id="namaOutlet"></h4>
                   <p>Are you sure to delete the data above?</p>

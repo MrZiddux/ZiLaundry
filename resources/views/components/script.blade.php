@@ -5,8 +5,8 @@
   <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="./assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="./assets/js/plugins/chartjs.min.js"></script>
-  <script src="./assets/js/plugins/datatables.js"></script>
-  <script>
+	<script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+	<script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
