@@ -9,5 +9,5 @@ class Paket extends Model
 {
     use HasFactory;
     protected $table = 'tb_paket';
-    protected $fillable = [];
+    protected $fillable = ['nama_paket', 'harga_paket', 'keterangan_paket'];
 }

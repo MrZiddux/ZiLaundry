@@ -151,6 +151,7 @@
                     success: function(data) {
                         if(data.success) {
                             gridOutlet.forceRender()
+                            $('#createModal').modal('hide')
                             $('#alertHere').html(
                                 `<div class="alert alert-success alert-dismissible fade show text-white mb-4 alertAnimation" role="alert">
                                     <span class="alert-icon align-middle">
@@ -180,7 +181,51 @@
                     }
                 })
             })
-         })
+
+
+            $('#btnUpdateOutlet').click(function(e) {
+                e.preventDefault()
+                let updateformdata = new FormData(document.getElementById('formUpdateOutlet'))
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('outlet.update') }}",
+                    processData: false,
+                    contentType: false,
+                    data: updateformdata,
+                    success: function(data) {
+                        if(data.success) {
+                            gridOutlet.forceRender()
+                            $('#editModal').modal('hide')
+                            $('#alertHere').html(
+                                `<div class="alert alert-success alert-dismissible fade show text-white mb-4 alertAnimation" role="alert">
+                                    <span class="alert-icon align-middle">
+                                        <span class="material-icons text-md">
+                                        thumb_up_off_alt
+                                        </span>
+                                    </span>
+                                    <span class="alert-text"><strong>Success!</strong>&nbsp;&nbsp;Update Data Outlet Successfull</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>`
+                            )
+                        } else {
+                            `<div class="alert alert-danger alert-dismissible fade show text-white mb-4 alertAnimation" role="alert">
+                                <span class="alert-icon align-middle">
+                                    <span class="material-icons text-md">
+                                    info
+                                    </span>
+                                </span>
+                                <span class="alert-text"><strong>Success!</strong>&nbsp;&nbsp;Update Data Outlet Unsuccessfull</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>`
+                        }
+                    }
+                })
+            })
+        })
       </script>
    </x-slot>
 </x-app>

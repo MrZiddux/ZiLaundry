@@ -43,7 +43,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('outlet.update') }}" method="POST" autocomplete="off">
+         <form autocomplete="off" id="formUpdateOutlet">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id">
@@ -62,7 +62,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+               <button type="submit" class="btn bg-gradient-primary" id="btnUpdateOutlet">Save changes</button>
             </div>
          </form>
       </div>

@@ -28,7 +28,7 @@ class OutletController extends Controller
     public function update(Request $r)
     {
         Outlet::find($r->id)->update($r->all());
-        return back()->with('status', 'Edit Data Member Successfull');
+        return response()->json(array('success' => true));
     }
 
     public function destroy(Request $r)
