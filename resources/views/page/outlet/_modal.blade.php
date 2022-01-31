@@ -79,7 +79,7 @@
             <span aria-hidden="true">×</span>
          </button>
          </div>
-         <form action="{{ route('outlet.destroy') }}" method="POST">
+         <form id="formDeleteOutlet">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id2">
@@ -92,7 +92,7 @@
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn btn-danger">Delete</button>
+               <button type="button" class="btn btn-danger" id="btnDeleteOutlet">Delete</button>
                <button type="button" class="btn btn-link ml-auto" data-bs-dismiss="modal">Close</button>
             </div>
          </form>

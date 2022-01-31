@@ -12,5 +12,7 @@
 {{-- Grid JS --}}
 {{-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css"> --}}
 <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+{{-- Select 2 --}}
+<link rel="stylesheet" href="/assets/vendors/select2/css/select2.min.css">
 {{-- Custom CSS --}}
-<link rel="stylesheet" href=".assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">

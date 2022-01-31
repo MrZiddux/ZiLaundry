@@ -9,25 +9,30 @@ class PaketController extends Controller
 {
     public function index()
     {
+        return view('page.package.index');
+    }
+
+    public function getData()
+    {
         $packages = Paket::get();
-        return view('page.package.index', compact('packages'));
+        return response()->json($packages);
     }
 
     public function store(Request $r)
     {
         Paket::create($r->all());
-        return back()->with('status', 'New Data Package Added!');
+        return response()->json(array('success' => true));
     }
 
     public function update(Request $r)
     {
         Paket::find($r->id)->update($r->all());
-        return back()->with('status', 'Edit Data Package Successfull');
+        return response()->json(array('success' => true));
     }
 
     public function destroy(Request $r)
     {
         Paket::findOrFail($r->id)->delete();
-        return back()->with('status', 'Delete Data Package Success');
+        return response()->json(array('success' => true));
     }
 }

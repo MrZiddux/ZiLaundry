@@ -1,6 +1,6 @@
 .alertAnimation {
     animation-name: alert-pop-in;
-    animation-duration: 200ms;
+    animation-duration: 800ms;
 }
 
 @keyframes alert-pop-in {

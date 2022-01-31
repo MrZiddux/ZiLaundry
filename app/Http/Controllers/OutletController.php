@@ -34,6 +34,6 @@ class OutletController extends Controller
     public function destroy(Request $r)
     {
         Outlet::findOrFail($r->id)->delete();
-        return back()->with('status', 'Delete Data Member Success');
+        return response()->json(array('success' => true));
     }
 }

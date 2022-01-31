@@ -8,7 +8,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('member.store') }}" method="POST" autocomplete="off">
+         <form autocomplete="off" id="formCreateMember">
             @csrf
             <div class="modal-body">
                <div class="input-group input-group-dynamic mb-4 mt-2">
@@ -37,7 +37,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn bg-gradient-primary">Create</button>
+               <button type="button" class="btn bg-gradient-primary" id="btnCreateMember">Create</button>
             </div>
          </form>
       </div>
@@ -54,7 +54,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('member.update') }}" method="POST" autocomplete="off">
+         <form autocomplete="off" id="formUpdateMember">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id">
@@ -84,7 +84,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+               <button type="button" class="btn bg-gradient-primary" id="btnUpdateMember">Save changes</button>
             </div>
          </form>
       </div>
@@ -101,7 +101,7 @@
             <span aria-hidden="true">×</span>
          </button>
          </div>
-         <form action="{{ route('member.destroy') }}" method="POST">
+         <form id="formDeleteMember">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id2">
@@ -114,7 +114,7 @@
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn btn-danger">Delete</button>
+               <button type="button" class="btn btn-danger" id="btnDeleteMember">Delete</button>
                <button type="button" class="btn btn-link ml-auto" data-bs-dismiss="modal">Close</button>
             </div>
          </form>

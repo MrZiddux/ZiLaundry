@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->unsignedBigInteger('id_outlet');
             $table->enum('role', ['admin', 'kasir', 'owner']);
+            $table->boolean('rules_check');
             $table->timestamps();
             $table->foreign('id_outlet')->references('id')->on('tb_outlet');
         });
