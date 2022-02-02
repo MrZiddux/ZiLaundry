@@ -24,7 +24,7 @@ class AuthController extends Controller
             'username' => 'required|unique:tb_user|min:6',
             'password' => 'required|min:6',
             'id_outlet' => 'required',
-            'rules_check' => 'required',
+            'rules_check' => 'accepted',
         ]);
 
         User::create([
@@ -32,6 +32,7 @@ class AuthController extends Controller
             'username' => strtolower($r->username),
             'password' => bcrypt($r->password),
             'id_outlet' => $r->id_outlet,
+            'rules_check' => $r->rules_check,
             'role' => 'admin',
         ]);
 
@@ -48,26 +49,23 @@ class AuthController extends Controller
         }
     }
 
-    public function login(Request $r)
+    // make function middleware for multi user 
+
+
+    public function check(Request $r)
     {
+        $r->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
         $user = User::where('username', $r->username)->first();
         if (!$user) {
-            return response()->json(['message' => 'Username not found']);
+            return back()->with('username', 'Username not found');
         }
 
         if (!Hash::check($r->password, $user->password)) {
-            return response()->json(['message' => 'Password not match']);
-        }
-
-        if ($user->role == 'admin') {
-            session(['admin' => $user]);
-            return redirect('/');
-        } elseif ($user->role == 'kasir') {
-            session(['kasir' => $user]);
-            return redirect('/');
-        } else {
-            session(['owner' => $user]);
-            return redirect('/');
+            return back()->with('password', 'Password not match');
         }
     }
 

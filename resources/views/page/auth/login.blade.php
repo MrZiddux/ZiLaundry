@@ -41,25 +41,36 @@
                      </div>
                   </div>
                   <div class="card-body">
-                     <form role="form" class="text-start">
-                        <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control">
+                     <form method="POST" action="{{ route('login.check') }}" class="text-start" autocomplete="off">
+                        @csrf
+                        <div class="input-group input-group-outline my-3 @if(session('username')) is-filled is-invalid @endif">
+                           <label class="form-label">Username</label>
+                           <input type="text" class="form-control" name="username" value="{{ old('username') }}">
+                           @if (session('username'))
+                              <small class="w-100 text-danger d-block mt-1 mx-1">
+                                 {{ session('username') }}
+                              </small>
+                           @endif
                         </div>
-                        <div class="input-group input-group-outline mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control">
+                        <div class="input-group input-group-outline mb-3 @if(session('password')) is-filled is-invalid @endif">
+                           <label class="form-label">Password</label>
+                           <input type="password" class="form-control" name="password">
+                           @if (session('password'))
+                              <small class="w-100 text-danger d-block mt-1 mx-1">
+                                 {{ session('password') }}
+                              </small>
+                           @endif
                         </div>
                         <div class="form-check form-switch d-flex align-items-center mb-3">
-                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                        <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember me</label>
+                           <input class="form-check-input" type="checkbox" id="rememberMe">
+                           <label class="form-check-label mb-0 ms-2" for="rememberMe">Remember me</label>
                         </div>
                         <div class="text-center">
-                        <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                           <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                         </div>
                         <p class="mt-4 text-sm text-center">
-                        Don't have an account?
-                        <a href="/register" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                           Don't have an account?
+                           <a href="/register" class="text-primary text-gradient font-weight-bold">Sign up</a>
                         </p>
                      </form>
                   </div>

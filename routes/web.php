@@ -36,9 +36,13 @@ Route::post('package/store', [PaketController::class, 'store'])->name('package.s
 Route::post('package/update', [PaketController::class, 'update'])->name('package.update');
 Route::post('package/destroy', [PaketController::class, 'destroy'])->name('package.destroy');
 
-Route::view('register', 'page.auth.register');
-Route::get('register/getData', [AuthController::class, 'getDataOutlet']);
-Route::post('register/store', [AuthController::class, 'store'])->name('register.store');
-Route::post('register/checkUsername', [AuthController::class, 'checkUsername'])->name('register.checkUsername');
+// make middleware for guest
+Route::middleware('guest')->group(function () {
+   Route::view('register', 'page.auth.register');
+   Route::get('register/getData', [AuthController::class, 'getDataOutlet']);
+   Route::post('register/store', [AuthController::class, 'store'])->name('register.store');
+   Route::post('register/checkUsername', [AuthController::class, 'checkUsername'])->name('register.checkUsername');
 
-Route::view('login', 'page.auth.login');
+   Route::view('login', 'page.auth.login');
+   Route::post('login/check', [AuthController::class, 'check'])->name('login.check');
+});
