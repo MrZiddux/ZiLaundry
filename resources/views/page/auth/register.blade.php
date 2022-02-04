@@ -105,8 +105,9 @@
       $(function () {
          $('#selectOutlet').select2({
             ajax: {
-               url: 'register/getData',
+               url: '/api/register/getData',
                dataType: 'json',
+               type: 'POST',
                data: function (params) {
                   var query = {
                      search: params.term,
@@ -172,7 +173,7 @@
             }
          });
       })
-      
+
    </script>
 </body>
 </html>

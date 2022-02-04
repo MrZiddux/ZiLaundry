@@ -7,7 +7,7 @@
         </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
-    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse w-auto max-height-vh-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link text-white {{ request()->is('/') ? 'active bg-gradient-primary' : '' }}" href="/">
@@ -25,7 +25,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Outlet</span>
+            <span class="nav-link-text ms-1">Outlets</span>
             </a>
         </li>
         <li class="nav-item">
@@ -33,7 +33,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Member</span>
+            <span class="nav-link-text ms-1">Members</span>
             </a>
         </li>
         <li class="nav-item">
@@ -41,57 +41,44 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">Package</span>
+            <span class="nav-link-text ms-1">Packages</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/rtl.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
-            </div>
-            <span class="nav-link-text ms-1">RTL</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/notifications.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">notifications</i>
-            </div>
-            <span class="nav-link-text ms-1">Notifications</span>
-            </a>
-        </li>
-        <li class="nav-item mt-3">
-            <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/profile.html">
+            <a class="nav-link text-white {{ request()->is('user') ? 'active bg-gradient-primary' : '' }}" href="/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">person</i>
             </div>
-            <span class="nav-link-text ms-1">Profile</span>
+            <span class="nav-link-text ms-1">Users</span>
             </a>
+        </li>
+        <li class="nav-item mt-3">
+            <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Transaction</h6>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/sign-in.html">
+            <a class="nav-link text-white {{ request()->is('transaction') ? 'active bg-gradient-primary' : '' }}" href="/transaction">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">login</i>
+                <i class="material-icons opacity-10">money</i>
             </div>
-            <span class="nav-link-text ms-1">Sign In</span>
+            <span class="nav-link-text ms-1">Transaction</span>
             </a>
         </li>
+        <li class="nav-item mt-3">
+            <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Utilities</h6>
+        </li>
+        @auth
         <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/sign-up.html">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
-            </a>
+            <form action="{{ route('user.logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="nav-link text-white bg-transparent border-0">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">logout</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Logout</span>
+                </button>
+            </form>
         </li>
+        @endauth
         </ul>
-    </div>
-    <div class="sidenav-footer position-absolute w-100 bottom-0 ">
-        <div class="mx-3">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
-        </div>
     </div>
 </aside>

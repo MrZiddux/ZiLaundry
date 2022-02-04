@@ -11,10 +11,11 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function getDataOutlet()
+    public function getDataOutlet(Request $r)
     {
         $outlets = Outlet::get();
-        return response()->json($outlets);
+        $query = Outlet::whereNama('LIKE', '%'. $r->nama. '%')->get();
+        return response()->json($query);
     }
 
     public function store(Request $r)
@@ -51,12 +52,13 @@ class AuthController extends Controller
         }
     }
 
-    // make function middleware for multi user 
+    // make function middleware for multi user
 
 
     public function check(Request $r)
     {
         if (Auth::attempt($r->only('username', 'password'))) {
+            $r->session()->regenerate();
             return redirect('/');
         }
 
@@ -68,7 +70,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        session()->forget('user');
+        Auth::logout();
         return redirect('/login');
     }
 }
