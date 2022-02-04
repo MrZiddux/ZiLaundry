@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Outlet;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -54,19 +56,14 @@ class AuthController extends Controller
 
     public function check(Request $r)
     {
-        $r->validate([
-            'username' => 'required',
-            'password' => 'required',
+        if (Auth::attempt($r->only('username', 'password'))) {
+            return redirect('/');
+        }
+
+        throw ValidationException::withMessages([
+            'username' => "Username can't be found",
+            'password' => "Your password don't match in our records",
         ]);
-
-        $user = User::where('username', $r->username)->first();
-        if (!$user) {
-            return back()->with('username', 'Username not found');
-        }
-
-        if (!Hash::check($r->password, $user->password)) {
-            return back()->with('password', 'Password not match');
-        }
     }
 
     public function logout()
