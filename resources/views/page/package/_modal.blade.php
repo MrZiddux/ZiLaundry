@@ -12,17 +12,18 @@
             @csrf
             <div class="modal-body">
                <div class="input-group input-group-dynamic mb-4 mt-2">
-                  <label class="form-label">Name</label>
-                  <input type="text" class="form-control" name="nama">
+                  <label class="form-label">Package Name</label>
+                  <input type="text" class="form-control" name="nama_paket">
                </div>
                <div class="input-group input-group-dynamic mb-4">
-                  <label class="form-label">Number</label>
-                  <input type="tel" class="form-control" name="tlp">
+                  <label class="form-label">Package Type</label>
+                  <input type="tel" class="form-control" name="jenis">
                </div>
-               <div class="input-group input-group-static mb-4">
-                  <label>Alamat</label>
-                  <textarea class="form-control" name="alamat" rows="2" placeholder="Input your address ..."></textarea>
-               </div>
+               <select name="" id="" vals>
+                   <option value="Asb"></option>
+                   <option value=""></option>
+                   <option value=""></option>
+               </select>
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -85,14 +86,14 @@
                <input type="hidden" name="id" id="id2">
                <div class="py-3 text-center">
                   <i class="material-icons text-secondary" style="font-size: 6rem">
-                     warning  
+                     warning
                   </i>
                   <h4 class="text-gradient text-danger mt-2" id="namaPackage"></h4>
                   <p>Are you sure to delete the data above?</p>
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn btn-danger">Delete</button>
+               <button type="button" class="btn btn-danger">Delete</button>
                <button type="button" class="btn btn-link ml-auto" data-bs-dismiss="modal">Close</button>
             </div>
          </form>

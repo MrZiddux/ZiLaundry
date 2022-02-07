@@ -13,8 +13,8 @@ class AuthController extends Controller
 {
     public function getDataOutlet(Request $r)
     {
-        $outlets = Outlet::get();
-        $query = Outlet::whereNama('LIKE', '%'. $r->nama. '%')->get();
+        // $outlets = Outlet::get();
+        $query = Outlet::where('Nama', 'LIKE', '%' . $r->nama . '%')->get();
         return response()->json($query);
     }
 
@@ -36,7 +36,7 @@ class AuthController extends Controller
             'password' => bcrypt($r->password),
             'id_outlet' => $r->id_outlet,
             'rules_check' => $r->rules_check,
-            'role' => 'admin',
+            'role' => 'kasir',
         ]);
 
         return redirect('/login')->with('success', 'Successfully registered');

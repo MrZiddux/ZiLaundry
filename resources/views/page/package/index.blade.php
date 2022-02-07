@@ -16,12 +16,12 @@
                method: 'GET',
                url: '/package/getData',
                then: data=>data.map(item =>[
-                  item.nama,
-                  item.tlp,
-                  item.alamat,
+                  item.nama_paket,
+                  item.jenis,
+                  item.harga,
                   new gridjs.html(
-                     `<button class='btn btn-link text-dark px-3 mb-0 btnEdit' data-bs-toggle='modal' data-bs-target='#editModal' data-id='${item.id}' data-nama='${item.nama}' data-tlp='${item.tlp}' data-alamat='${item.alamat}'><i class='material-icons text-sm me-2'>edit</i>Edit</button>` +
-                     `<button class="btn btn-link text-danger text-gradient px-3 mb-0 btnHapus" data-bs-toggle="modal" data-bs-target="#hapusModal" data-id="${item.id}" data-nama="${item.nama}"><i class="material-icons text-sm me-2">delete</i>Delete</button>`
+                     `<button class='btn btn-link text-dark px-3 mb-0 btnEdit' data-bs-toggle='modal' data-bs-target='#editModal' data-id='${item.id}' data-nama-paket='${item.nama_paket}' data-harga='${item.harga}'><i class='material-icons text-sm me-2'>edit</i>Edit</button>` +
+                     `<button class="btn btn-link text-danger text-gradient px-3 mb-0 btnHapus" data-bs-toggle="modal" data-bs-target="#hapusModal" data-id="${item.id}" data-nama-paket="${item.nama_paket}"><i class="material-icons text-sm me-2">delete</i>Delete</button>`
                   ),
                ]),
             },
@@ -56,23 +56,21 @@
          $(function () {
             $('#gridPackage').on('click', '.btnEdit', function() {
                let row = $(this).closest('tr')
-               let id = row.find('td:eq(4) .btnEdit').data('id')
-               let nama = row.find('td:eq(4) .btnEdit').data('nama')
-               let tlp = row.find('td:eq(4) .btnEdit').data('tlp')
-               let alamat = row.find('td:eq(4) .btnEdit').data('alamat')
+               let id = row.find('td:eq(3) .btnEdit').data('id')
+               let nama_paket = row.find('td:eq(3) .btnEdit').data('nama-paket')
+               let harga = row.find('td:eq(3) .btnEdit').data('harga')
 
                $('#editModal #id').val(id);
-               $('#editModal #nama').val(nama);
-               $('#editModal #tlp').val(tlp);
-               $('#editModal #alamat').text(alamat);
+               $('#editModal #nama_paket').val(nama_paket);
+               $('#editModal #harga').val(harga);
             })
 
             $('#gridPackage').on('click', '.btnHapus', function() {
                let row = $(this).closest('tr')
-               let id = row.find('td:eq(4) .btnHapus').data('id')
-               let nama = row.find('td:eq(4) .btnHapus').data('nama')
+               let id = row.find('td:eq(3) .btnHapus').data('id')
+               let nama_paket = row.find('td:eq(3) .btnHapus').data('nama-paket')
                $('#hapusModal #id2').val(id)
-               $('#hapusModal #namaOutlet').text(nama)
+               $('#hapusModal #namaPackage').text(nama_paket)
             })
 
             $('.alert').delay(5000).fadeOut('slow');
