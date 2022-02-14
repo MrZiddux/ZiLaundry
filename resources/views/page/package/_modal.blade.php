@@ -11,17 +11,21 @@
          <form action="{{ route('package.store') }}" method="POST" autocomplete="off">
             @csrf
             <div class="modal-body">
+                <select class="form-select" name="jenis">
+                    <option selected disabled>Pilih Jenis</option>
+                    <option value="kiloan">Kiloan</option>
+                    <option value="selimut">Selimut</option>
+                    <option value="bed_cover">Bed Cover</option>
+                    <option value="kaos">Kaos</option>
+                    <option value="lain">Lainnya</option>
+                </select>
                <div class="input-group input-group-dynamic mb-4 mt-2">
                   <label class="form-label">Name</label>
-                  <input type="text" class="form-control" name="nama">
+                  <input type="text" class="form-control" name="nama_paket">
                </div>
                <div class="input-group input-group-dynamic mb-4">
-                  <label class="form-label">Number</label>
-                  <input type="tel" class="form-control" name="tlp">
-               </div>
-               <div class="input-group input-group-static mb-4">
-                  <label>Alamat</label>
-                  <textarea class="form-control" name="alamat" rows="2" placeholder="Input your address ..."></textarea>
+                  <label class="form-label">Price</label>
+                  <input type="tel" class="form-control" name="harga">
                </div>
             </div>
             <div class="modal-footer">
@@ -47,18 +51,22 @@
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id">
-               <div class="input-group input-group-static mb-4 mt-2">
-                  <label for="nama">Name</label>
-                  <input type="text" class="form-control" name="nama" id="nama">
-               </div>
-               <div class="input-group input-group-static mb-4">
-                  <label for="tlp">Number</label>
-                  <input type="tel" class="form-control" name="tlp" id="tlp">
-               </div>
-               <div class="input-group input-group-static">
-                  <label for="alamat">Address</label>
-                  <textarea class="form-control" name="alamat" rows="2" placeholder="Input your address ..." id="alamat"></textarea>
-               </div>
+               <select class="form-select" name="jenis">
+                    <option selected disabled>Pilih Jenis</option>
+                    <option value="kiloan">Kiloan</option>
+                    <option value="selimut">Selimut</option>
+                    <option value="bed_cover">Bed Cover</option>
+                    <option value="kaos">Kaos</option>
+                    <option value="lain">Lainnya</option>
+                </select>
+            <div class="input-group input-group-dynamic mb-4 mt-2">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="nama_paket">
+            </div>
+            <div class="input-group input-group-dynamic mb-4">
+                <label class="form-label">Price</label>
+                <input type="tel" class="form-control" name="harga">
+            </div>
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -85,7 +93,7 @@
                <input type="hidden" name="id" id="id2">
                <div class="py-3 text-center">
                   <i class="material-icons text-secondary" style="font-size: 6rem">
-                     warning  
+                     warning
                   </i>
                   <h4 class="text-gradient text-danger mt-2" id="namaPackage"></h4>
                   <p>Are you sure to delete the data above?</p>

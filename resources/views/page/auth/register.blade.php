@@ -27,7 +27,7 @@
                      <p class="mb-0">Enter your credentials to register</p>
                   </div>
                   <div class="card-body">
-                     <form autocomplete="off" method="POST" action="{{ route('register.store') }}" class="@error('') @enderror was-validated">
+                     <form autocomplete="off" method="POST" action="{{ route('register.store') }}">
                         @csrf
                         <div class="input-group input-group-outline mb-3 w-100">
                            <select class="form-control text-secondary" id="selectOutlet" name="id_outlet">
@@ -52,10 +52,10 @@
                         <div class="input-group input-group-outline mb-3" id="confirmPassword">
                            <label class="form-label">Confirm Password</label>
                            <input type="password" class="form-control">
-                           <div class="valid-feedback">
-                              Looks good!
-                           </div>
                         </div>
+                        <small class="text-danger text-xs mt-n1">
+                           Looks good!
+                        </small>
                         <div class="form-check form-check-info text-start ps-0">
                            <input class="form-check-input" type="checkbox" value="1" id="rules_check" name="rules_check">
                            <label class="form-check-label" for="rules_check">
@@ -67,14 +67,14 @@
                         </div>
                      </form>
                      @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                   </div>
                   <div class="card-footer text-center pt-0 px-lg-2 px-1">
                      <p class="mb-2 text-sm mx-auto">
@@ -151,7 +151,7 @@
             })
          });
       })
-      
+
    </script>
 </body>
 </html>

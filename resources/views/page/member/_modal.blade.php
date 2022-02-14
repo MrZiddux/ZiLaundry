@@ -107,7 +107,7 @@
                <input type="hidden" name="id" id="id2">
                <div class="py-3 text-center">
                   <i class="material-icons text-secondary" style="font-size: 6rem">
-                     warning  
+                     warning
                   </i>
                   <h4 class="text-gradient text-danger mt-2" id="namaMember"></h4>
                   <p>Are you sure to delete the data above?</p>

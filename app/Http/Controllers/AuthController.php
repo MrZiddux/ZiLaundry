@@ -32,6 +32,7 @@ class AuthController extends Controller
             'username' => strtolower($r->username),
             'password' => bcrypt($r->password),
             'id_outlet' => $r->id_outlet,
+            'rules_check' => $r->rules_check,
             'role' => 'admin',
         ]);
 
