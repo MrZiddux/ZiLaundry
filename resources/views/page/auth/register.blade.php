@@ -71,6 +71,9 @@
                            <label class="form-label">Confirm Password</label>
                            <input type="password" class="form-control">
                         </div>
+                        <small class="text-danger text-xs mt-n1">
+                           Looks good!
+                        </small>
                         <div class="form-check form-check-info text-start ps-0">
                            <input class="form-check-input @error('rules_check') border-danger @enderror" type="checkbox" value="1" id="rules_check" name="rules_check">
                            <label class="form-check-label" for="rules_check">

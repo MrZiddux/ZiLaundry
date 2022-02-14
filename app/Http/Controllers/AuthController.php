@@ -36,7 +36,7 @@ class AuthController extends Controller
             'password' => bcrypt($r->password),
             'id_outlet' => $r->id_outlet,
             'rules_check' => $r->rules_check,
-            'role' => 'kasir',
+            'role' => 'admin',
         ]);
 
         return redirect('/login')->with('success', 'Successfully registered');
