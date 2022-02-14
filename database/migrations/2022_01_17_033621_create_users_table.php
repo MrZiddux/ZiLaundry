@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             'nama' => 'Ziyadatul Khair',
             'username' => 'ziddkh',
             'password' => Hash::make('123123'),
-            'id_outlet' => null,
+            'id_outlet' => 1,
             'role' => 'admin',
             'rules_check' => true,
         ]);

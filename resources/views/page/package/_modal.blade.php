@@ -8,7 +8,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('package.store') }}" method="POST" autocomplete="off">
+         <form autocomplete="off" id="formCreatePackage" method="POST">
             @csrf
             <div class="modal-body">
                 <select class="form-select" name="jenis">
@@ -29,7 +29,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn bg-gradient-primary">Create</button>
+               <button type="button" class="btn bg-gradient-primary" id="btnCreatePackage">Create</button>
             </div>
          </form>
       </div>
@@ -46,7 +46,7 @@
             <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('package.update') }}" method="POST" autocomplete="off">
+         <form autocomplete="off" id="formUpdatePackage">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id">
@@ -60,16 +60,16 @@
                 </select>
             <div class="input-group input-group-dynamic mb-4 mt-2">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="nama_paket">
+                <input type="text" class="form-control" name="nama_paket" id="nama_paket">
             </div>
             <div class="input-group input-group-dynamic mb-4">
                 <label class="form-label">Price</label>
-                <input type="tel" class="form-control" name="harga">
+                <input type="tel" class="form-control" name="harga" id="harga">
             </div>
             </div>
             <div class="modal-footer">
                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn bg-gradient-primary">Save changes</button>
+               <button type="button" class="btn bg-gradient-primary" id="btnUpdatePackage">Save changes</button>
             </div>
          </form>
       </div>
@@ -83,10 +83,10 @@
          <div class="modal-header">
          <h6 class="modal-title font-weight-normal" id="modal-title-notification">Delete Data Package</h6>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">x</span>
+            <span aria-hidden="true">&times;</span>
          </button>
          </div>
-         <form action="{{ route('package.destroy') }}" method="POST">
+         <form id="formDeletePackage">
             @csrf
             <div class="modal-body">
                <input type="hidden" name="id" id="id2">
@@ -99,7 +99,7 @@
                </div>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-danger">Delete</button>
+               <button type="button" class="btn btn-danger" id="btnDeletePackage">Delete</button>
                <button type="button" class="btn btn-link ml-auto" data-bs-dismiss="modal">Close</button>
             </div>
          </form>

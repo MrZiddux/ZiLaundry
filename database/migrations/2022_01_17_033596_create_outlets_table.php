@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Outlet;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,12 @@ class CreateOutletsTable extends Migration
             $table->string('tlp', 15);
             $table->timestamps();
         });
+
+      Outlet::create([
+         'nama' => 'Zilaundry-Cianjur',
+         'alamat' => 'Jl. KH Abdullah bin Nuh',
+         'tlp' => '085724578726',
+      ]);
     }
 
     /**

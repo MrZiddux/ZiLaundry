@@ -10,7 +10,6 @@ class PaketController extends Controller
 {
     public function index()
     {
-        dd(auth()->user());
         return view('page.package.index');
     }
 
@@ -23,7 +22,10 @@ class PaketController extends Controller
     public function store(Request $r)
     {
         Paket::create([
-            'id_outlet' => Auth()->user()
+            'id_outlet' => auth()->user()->id_outlet,
+            'jenis' => $r->jenis,
+            'nama_paket' => $r->nama_paket,
+            'harga' => $r->harga,
         ]);
         return response()->json(array('success' => true));
     }
